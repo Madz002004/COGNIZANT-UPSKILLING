@@ -1,0 +1,1410 @@
+1. Hello World Program
+Objective: Understand the basic structure of a Java program.
+
+Solution:
+
+java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+Explanation:
+
+The public class HelloWorld declares a class that must match the filename (HelloWorld.java)
+
+public static void main(String[] args) is the entry point of any Java application
+
+System.out.println() prints the string to the console with a newline
+
+2. Simple Calculator
+Objective: Practice arithmetic operations and user input.
+
+Solution:
+
+java
+import java.util.Scanner;
+
+public class SimpleCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter first number: ");
+        double num1 = scanner.nextDouble();
+        
+        System.out.print("Enter second number: ");
+        double num2 = scanner.nextDouble();
+        
+        System.out.print("Choose operation (+, -, *, /): ");
+        char operation = scanner.next().charAt(0);
+        
+        double result;
+        switch(operation) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                result = num1 / num2;
+                break;
+            default:
+                System.out.println("Invalid operation");
+                return;
+        }
+        
+        System.out.println("Result: " + result);
+    }
+}
+Explanation:
+
+Uses Scanner class for user input
+
+Performs basic arithmetic operations based on user choice
+
+Handles invalid operation input gracefully
+
+3. Even or Odd Checker
+Objective: Utilize conditional statements.
+
+Solution:
+
+java
+import java.util.Scanner;
+
+public class EvenOddChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt();
+        
+        if (number % 2 == 0) {
+            System.out.println(number + " is even.");
+        } else {
+            System.out.println(number + " is odd.");
+        }
+    }
+}
+Explanation:
+
+Uses modulus operator % to check divisibility by 2
+
+Simple if-else conditional structure
+
+4. Leap Year Checker
+Objective: Apply nested conditional logic.
+
+Solution:
+
+java
+import java.util.Scanner;
+
+public class LeapYearChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a year: ");
+        int year = scanner.nextInt();
+        
+        boolean isLeapYear = false;
+        
+        if (year % 4 == 0) {
+            if (year % 100 != 0) {
+                isLeapYear = true;
+            } else {
+                if (year % 400 == 0) {
+                    isLeapYear = true;
+                }
+            }
+        }
+        
+        System.out.println(year + (isLeapYear ? " is" : " is not") + " a leap year.");
+    }
+}
+Explanation:
+
+A year is a leap year if:
+
+Divisible by 4 but not by 100, OR
+
+Divisible by 400
+
+Uses nested if statements to implement this logic
+
+5. Multiplication Table
+Objective: Implement loops.
+
+Solution:
+
+java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+        
+        System.out.println("Multiplication table for " + number + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(number + " x " + i + " = " + (number * i));
+        }
+    }
+}
+Explanation:
+
+Uses a simple for loop to iterate from 1 to 10
+
+Prints the multiplication result for each iteration
+
+6. Data Type Demonstration
+Objective: Understand Java's primitive data types.
+
+Solution:
+
+java
+public class DataTypesDemo {
+    public static void main(String[] args) {
+        // Integer types
+        byte byteVar = 127;
+        short shortVar = 32767;
+        int intVar = 2147483647;
+        long longVar = 9223372036854775807L;
+        
+        // Floating point types
+        float floatVar = 3.4028235E38f;
+        double doubleVar = 1.7976931348623157E308;
+        
+        // Character type
+        char charVar = 'A';
+        
+        // Boolean type
+        boolean boolVar = true;
+        
+        // Display all variables
+        System.out.println("byte: " + byteVar);
+        System.out.println("short: " + shortVar);
+        System.out.println("int: " + intVar);
+        System.out.println("long: " + longVar);
+        System.out.println("float: " + floatVar);
+        System.out.println("double: " + doubleVar);
+        System.out.println("char: " + charVar);
+        System.out.println("boolean: " + boolVar);
+    }
+}
+Explanation:
+
+Demonstrates all 8 primitive data types in Java
+
+Shows their declaration and initialization
+
+Prints their values to show their ranges
+
+7. Type Casting Example
+Objective: Practice type casting between different data types.
+
+Solution:
+
+java
+public class TypeCastingExample {
+    public static void main(String[] args) {
+        // Double to int
+        double doubleValue = 123.456;
+        int intValue = (int) doubleValue;
+        System.out.println("Double " + doubleValue + " cast to int: " + intValue);
+        
+        // Int to double
+        int anotherInt = 100;
+        double anotherDouble = anotherInt; // Automatic widening
+        System.out.println("Int " + anotherInt + " cast to double: " + anotherDouble);
+    }
+}
+Explanation:
+
+Shows explicit casting (double to int) which truncates decimal part
+
+Shows implicit casting (int to double) which is automatic
+
+Demonstrates widening and narrowing conversions
+
+8. Operator Precedence
+Objective: Explore how Java evaluates expressions.
+
+Solution:
+
+java
+public class OperatorPrecedence {
+    public static void main(String[] args) {
+        int result1 = 10 + 5 * 2; // Multiplication has higher precedence
+        int result2 = (10 + 5) * 2; // Parentheses change precedence
+        
+        System.out.println("10 + 5 * 2 = " + result1);
+        System.out.println("(10 + 5) * 2 = " + result2);
+        
+        // More complex example
+        int a = 5, b = 10, c = 15;
+        int complexResult = a++ + b * c / a;
+        System.out.println("a++ + b * c / a = " + complexResult);
+        System.out.println("Explanation:");
+        System.out.println("1. Post-increment a (but use original value 5)");
+        System.out.println("2. Multiply b * c (10 * 15 = 150)");
+        System.out.println("3. Division has same precedence as multiplication, left to right");
+        System.out.println("4. 150 / (a after increment = 6) = 25");
+        System.out.println("5. 5 + 25 = 30");
+    }
+}
+Explanation:
+
+Demonstrates operator precedence rules
+
+Shows how parentheses can change evaluation order
+
+Explains evaluation of a complex expression step by step
+
+9. Grade Calculator
+Objective: Use conditional statements to determine grades.
+
+Solution:
+
+java
+import java.util.Scanner;
+
+public class GradeCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter marks (out of 100): ");
+        int marks = scanner.nextInt();
+        
+        char grade;
+        if (marks >= 90) {
+            grade = 'A';
+        } else if (marks >= 80) {
+            grade = 'B';
+        } else if (marks >= 70) {
+            grade = 'C';
+        } else if (marks >= 60) {
+            grade = 'D';
+        } else {
+            grade = 'F';
+        }
+        
+        System.out.println("Grade: " + grade);
+    }
+}
+Explanation:
+
+Uses if-else ladder to determine grade based on marks
+
+Each condition checks a range of marks
+
+Simple and efficient grading logic
+
+10. Number Guessing Game
+Objective: Implement loops and conditional logic.
+
+Solution:
+
+java
+import java.util.Scanner;
+import java.util.Random;
+
+public class NumberGuessingGame {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        
+        int secretNumber = random.nextInt(100) + 1; // 1 to 100
+        int guess;
+        int attempts = 0;
+        
+        System.out.println("Guess the number between 1 and 100!");
+        
+        do {
+            System.out.print("Enter your guess: ");
+            guess = scanner.nextInt();
+            attempts++;
+            
+            if (guess < secretNumber) {
+                System.out.println("Too low!");
+            } else if (guess > secretNumber) {
+                System.out.println("Too high!");
+            }
+        } while (guess != secretNumber);
+        
+        System.out.println("Congratulations! You guessed the number in " + attempts + " attempts.");
+    }
+}
+Explanation:
+
+Uses Random class to generate a random number
+
+do-while loop continues until correct guess
+
+Provides feedback on each guess (too high/too low)
+
+Counts number of attempts
+
+11. Factorial Calculator
+Objective: Use loops to perform repetitive calculations.
+
+Solution:
+
+java
+import java.util.Scanner;
+
+public class FactorialCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a non-negative integer: ");
+        int number = scanner.nextInt();
+        
+        if (number < 0) {
+            System.out.println("Factorial is not defined for negative numbers.");
+            return;
+        }
+        
+        long factorial = 1;
+        for (int i = 1; i <= number; i++) {
+            factorial *= i;
+        }
+        
+        System.out.println(number + "! = " + factorial);
+    }
+}
+Explanation:
+
+Calculates factorial using iterative approach
+
+Handles edge case of negative input
+
+Uses long to accommodate larger factorial values
+
+Simple for loop for multiplication
+
+12. Method Overloading
+Objective: Understand method overloading in Java.
+
+Solution:
+
+java
+public class MethodOverloading {
+    // Method to add two integers
+    public static int add(int a, int b) {
+        return a + b;
+    }
+    
+    // Method to add two doubles
+    public static double add(double a, double b) {
+        return a + b;
+    }
+    
+    // Method to add three integers
+    public static int add(int a, int b, int c) {
+        return a + b + c;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Adding two integers: " + add(5, 10));
+        System.out.println("Adding two doubles: " + add(3.5, 2.7));
+        System.out.println("Adding three integers: " + add(1, 2, 3));
+    }
+}
+Explanation:
+
+Demonstrates three overloaded add methods
+
+Methods differ by parameter types and number
+
+Java selects appropriate method based on arguments
+
+Shows compile-time polymorphism
+
+13. Recursive Fibonacci
+Objective: Implement recursion.
+
+Solution:
+
+java
+import java.util.Scanner;
+
+public class RecursiveFibonacci {
+    public static int fibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        return fibonacci(n-1) + fibonacci(n-2);
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a positive integer: ");
+        int n = scanner.nextInt();
+        
+        if (n < 0) {
+            System.out.println("Please enter a positive integer.");
+            return;
+        }
+        
+        System.out.println("Fibonacci number at position " + n + ": " + fibonacci(n));
+    }
+}
+Explanation:
+
+Classic recursive Fibonacci implementation
+
+Base case: n ≤ 1 returns n
+
+Recursive case: sum of previous two Fibonacci numbers
+
+Note: Inefficient for large n (O(2^n) time complexity)
+
+14. Array Sum and Average
+Objective: Work with arrays and perform calculations.
+
+Solution:
+
+java
+import java.util.Scanner;
+
+public class ArraySumAverage {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter number of elements: ");
+        int n = scanner.nextInt();
+        
+        double[] numbers = new double[n];
+        double sum = 0;
+        
+        System.out.println("Enter " + n + " numbers:");
+        for (int i = 0; i < n; i++) {
+            numbers[i] = scanner.nextDouble();
+            sum += numbers[i];
+        }
+        
+        double average = sum / n;
+        
+        System.out.println("Sum: " + sum);
+        System.out.println("Average: " + average);
+    }
+}
+Explanation:
+
+Creates array based on user input size
+
+Reads elements into array and calculates sum
+
+Computes average by dividing sum by count
+
+Shows basic array operations
+
+15. String Reversal
+Objective: Manipulate strings.
+
+Solution:
+
+java
+import java.util.Scanner;
+
+public class StringReversal {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        
+        // Using StringBuilder
+        String reversed = new StringBuilder(input).reverse().toString();
+        System.out.println("Reversed (StringBuilder): " + reversed);
+        
+        // Using loop
+        String loopReversed = "";
+        for (int i = input.length() - 1; i >= 0; i--) {
+            loopReversed += input.charAt(i);
+        }
+        System.out.println("Reversed (loop): " + loopReversed);
+    }
+}
+Explanation:
+
+Shows two approaches: StringBuilder and manual loop
+
+StringBuilder's reverse() method is efficient
+
+Manual loop demonstrates character-by-character reversal
+
+Note: String concatenation in loop is inefficient for large strings
+
+16. Palindrome Checker
+Objective: Combine string manipulation and conditional logic.
+
+Solution:
+
+java
+import java.util.Scanner;
+
+public class PalindromeChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        
+        // Clean the string
+        String clean = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        
+        // Check palindrome
+        boolean isPalindrome = true;
+        int length = clean.length();
+        for (int i = 0; i < length/2; i++) {
+            if (clean.charAt(i) != clean.charAt(length - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+        }
+        
+        System.out.println("\"" + input + "\" is " + (isPalindrome ? "" : "not ") + "a palindrome.");
+    }
+}
+Explanation:
+
+Cleans string by removing non-alphanumeric characters and converting to lowercase
+
+Checks if string reads same forwards and backwards
+
+Efficiently checks only first half against second half
+
+Handles phrases with punctuation and mixed case
+
+17. Class and Object Creation
+Objective: Understand classes and objects.
+
+Solution:
+
+java
+public class Car {
+    // Attributes
+    private String make;
+    private String model;
+    private int year;
+    
+    // Constructor
+    public Car(String make, String model, int year) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+    }
+    
+    // Method to display details
+    public void displayDetails() {
+        System.out.println("Make: " + make);
+        System.out.println("Model: " + model);
+        System.out.println("Year: " + year);
+    }
+    
+    public static void main(String[] args) {
+        // Create objects
+        Car car1 = new Car("Toyota", "Camry", 2020);
+        Car car2 = new Car("Honda", "Accord", 2019);
+        
+        // Call methods
+        System.out.println("Car 1 Details:");
+        car1.displayDetails();
+        
+        System.out.println("\nCar 2 Details:");
+        car2.displayDetails();
+    }
+}
+Explanation:
+
+Defines a Car class with attributes and methods
+
+Uses constructor for object initialization
+
+Creates multiple objects and calls their methods
+
+Demonstrates encapsulation with private fields
+
+18. Inheritance Example
+Objective: Implement inheritance.
+
+Solution:
+
+java
+// Base class
+class Animal {
+    public void makeSound() {
+        System.out.println("Some generic animal sound");
+    }
+}
+
+// Subclass
+class Dog extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Bark");
+    }
+}
+
+public class InheritanceExample {
+    public static void main(String[] args) {
+        Animal genericAnimal = new Animal();
+        Dog myDog = new Dog();
+        
+        System.out.print("Generic animal: ");
+        genericAnimal.makeSound();
+        
+        System.out.print("Dog: ");
+        myDog.makeSound();
+    }
+}
+Explanation:
+
+Animal is base class with generic makeSound()
+
+Dog extends Animal and overrides makeSound()
+
+Demonstrates polymorphism - same method, different behaviors
+
+Shows inheritance relationship with extends keyword
+
+19. Interface Implementation
+Objective: Use interfaces in Java.
+
+Solution:
+
+java
+interface Playable {
+    void play();
+}
+
+class Guitar implements Playable {
+    @Override
+    public void play() {
+        System.out.println("Strumming guitar strings");
+    }
+}
+
+class Piano implements Playable {
+    @Override
+    public void play() {
+        System.out.println("Playing piano keys");
+    }
+}
+
+public class InterfaceExample {
+    public static void main(String[] args) {
+        Playable guitar = new Guitar();
+        Playable piano = new Piano();
+        
+        guitar.play();
+        piano.play();
+    }
+}
+Explanation:
+
+Defines Playable interface with play() method
+
+Guitar and Piano classes implement the interface
+
+Each provides its own implementation of play()
+
+Demonstrates interface as a contract for behavior
+
+20. Try-Catch Example
+Objective: Handle exceptions gracefully.
+
+Solution:
+
+java
+import java.util.Scanner;
+
+public class TryCatchExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        try {
+            System.out.print("Enter first number: ");
+            int num1 = scanner.nextInt();
+            
+            System.out.print("Enter second number: ");
+            int num2 = scanner.nextInt();
+            
+            int result = num1 / num2;
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Division by zero is not allowed.");
+        } catch (Exception e) {
+            System.out.println("Error: Invalid input.");
+        } finally {
+            System.out.println("Execution completed.");
+            scanner.close();
+        }
+    }
+}
+Explanation:
+
+Attempts division operation that might throw ArithmeticException
+
+Catches specific exception for division by zero
+
+General catch block for other input errors
+
+Finally block for cleanup (closing scanner)
+
+21. Custom Exception
+Objective: Create and use custom exceptions.
+
+Solution:
+
+java
+import java.util.Scanner;
+
+// Custom exception
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+public class CustomExceptionExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        try {
+            System.out.print("Enter your age: ");
+            int age = scanner.nextInt();
+            
+            if (age < 18) {
+                throw new InvalidAgeException("Age must be 18 or older");
+            }
+            
+            System.out.println("Welcome! You are eligible.");
+        } catch (InvalidAgeException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Invalid input");
+        }
+    }
+}
+Explanation:
+
+Defines custom InvalidAgeException extending Exception
+
+Throws exception when age < 18
+
+Catches and handles the custom exception
+
+Demonstrates creating and using custom exceptions
+
+22. File Writing
+Objective: Write data to a file.
+
+Solution:
+
+java
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class FileWriting {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter text to write to file: ");
+        String text = scanner.nextLine();
+        
+        try (FileWriter writer = new FileWriter("output.txt")) {
+            writer.write(text);
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+}
+Explanation:
+
+Uses FileWriter to write to a file
+
+try-with-resources ensures writer is closed automatically
+
+Handles potential IOException
+
+Simple text file creation
+
+23. File Reading
+Objective: Read data from a file.
+
+Solution:
+
+java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileReading {
+    public static void main(String[] args) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("output.txt"))) {
+            String line;
+            System.out.println("File contents:");
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+}
+Explanation:
+
+Uses BufferedReader for efficient reading
+
+try-with-resources for automatic resource management
+
+Reads file line by line
+
+Handles potential IOException
+
+24. ArrayList Example
+Objective: Use dynamic arrays.
+
+Solution:
+
+java
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ArrayListExample {
+    public static void main(String[] args) {
+        ArrayList<String> studentNames = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        
+        while (true) {
+            System.out.print("Enter student name (or 'done' to finish): ");
+            String name = scanner.nextLine();
+            
+            if (name.equalsIgnoreCase("done")) {
+                break;
+            }
+            
+            studentNames.add(name);
+        }
+        
+        System.out.println("\nStudent Names:");
+        for (String name : studentNames) {
+            System.out.println(name);
+        }
+    }
+}
+Explanation:
+
+Demonstrates ArrayList for dynamic resizing
+
+Allows continuous input until "done" is entered
+
+Shows enhanced for loop for iteration
+
+Dynamic collection unlike fixed-size arrays
+
+25. HashMap Example
+Objective: Use key-value pairs.
+
+Solution:
+
+java
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class HashMapExample {
+    public static void main(String[] args) {
+        HashMap<Integer, String> studentMap = new HashMap<>();
+        Scanner scanner = new Scanner(System.in);
+        
+        while (true) {
+            System.out.print("Enter student ID (or -1 to finish): ");
+            int id = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+            
+            if (id == -1) {
+                break;
+            }
+            
+            System.out.print("Enter student name: ");
+            String name = scanner.nextLine();
+            
+            studentMap.put(id, name);
+        }
+        
+        System.out.print("\nEnter ID to lookup: ");
+        int lookupId = scanner.nextInt();
+        String studentName = studentMap.get(lookupId);
+        
+        if (studentName != null) {
+            System.out.println("Student name: " + studentName);
+        } else {
+            System.out.println("Student not found.");
+        }
+    }
+}
+Explanation:
+
+Uses HashMap to store ID-name pairs
+
+Demonstrates put() and get() operations
+
+Shows null check for non-existent keys
+
+Handles user input for map population and lookup
+
+26. Thread Creation
+Objective: Implement multithreading.
+
+Solution:
+
+java
+// Extending Thread class
+class MyThread extends Thread {
+    private String message;
+    
+    public MyThread(String message) {
+        this.message = message;
+    }
+    
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println(message + " " + i);
+            try {
+                Thread.sleep(500); // Pause for 500ms
+            } catch (InterruptedException e) {
+                System.out.println("Thread interrupted");
+            }
+        }
+    }
+}
+
+public class ThreadCreation {
+    public static void main(String[] args) {
+        MyThread thread1 = new MyThread("Thread 1");
+        MyThread thread2 = new MyThread("Thread 2");
+        
+        thread1.start();
+        thread2.start();
+    }
+}
+Explanation:
+
+Creates custom thread by extending Thread class
+
+Overrides run() method with thread behavior
+
+Starts threads with start() method
+
+Shows concurrent execution with sleep()
+
+27. Lambda Expressions
+Objective: Use functional programming features.
+
+Solution:
+
+java
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class LambdaExpressions {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David", "Eve");
+        
+        System.out.println("Original list: " + names);
+        
+        // Sort with lambda expression
+        Collections.sort(names, (a, b) -> a.compareTo(b));
+        System.out.println("Sorted (ascending): " + names);
+        
+        // Another sort with different lambda
+        Collections.sort(names, (a, b) -> b.compareTo(a));
+        System.out.println("Sorted (descending): " + names);
+    }
+}
+Explanation:
+
+Shows list sorting with lambda expressions
+
+First lambda sorts ascending (a.compareTo(b))
+
+Second lambda sorts descending (b.compareTo(a))
+
+Demonstrates concise functional programming syntax
+
+28. Stream API
+Objective: Process collections using streams.
+
+Solution:
+
+java
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StreamAPIExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        
+        // Filter even numbers using Stream API
+        List<Integer> evenNumbers = numbers.stream()
+                                         .filter(n -> n % 2 == 0)
+                                         .collect(Collectors.toList());
+        
+        System.out.println("Original numbers: " + numbers);
+        System.out.println("Even numbers: " + evenNumbers);
+        
+        // Additional stream operations
+        System.out.println("Squared even numbers:");
+        numbers.stream()
+              .filter(n -> n % 2 == 0)
+              .map(n -> n * n)
+              .forEach(System.out::println);
+    }
+}
+Explanation:
+
+Demonstrates Stream API pipeline (stream(), filter(), collect())
+
+Shows functional operations on collections
+
+Includes map() and forEach() operations
+
+Method reference (System.out::println) for concise code
+
+29. Records (Java 16+)
+Objective: Use the record keyword for immutable data structures.
+
+Solution:
+
+java
+import java.util.List;
+import java.util.stream.Collectors;
+
+// Define a record
+record Person(String name, int age) {}
+
+public class RecordsExample {
+    public static void main(String[] args) {
+        // Create record instances
+        Person alice = new Person("Alice", 30);
+        Person bob = new Person("Bob", 25);
+        Person charlie = new Person("Charlie", 35);
+        
+        System.out.println(alice); // Auto-generated toString()
+        System.out.println("Name: " + alice.name()); // Accessor method
+        
+        // Use records in a list
+        List<Person> people = List.of(alice, bob, charlie);
+        
+        // Filter using Streams
+        List<Person> over30 = people.stream()
+                                   .filter(p -> p.age() > 30)
+                                   .collect(Collectors.toList());
+        
+        System.out.println("People over 30: " + over30);
+    }
+}
+Explanation:
+
+Defines Person record with name and age components
+
+Shows automatic generation of constructor, accessors, equals(), hashCode(), toString()
+
+Demonstrates using records with Stream API
+
+Immutable by design - no setters
+
+30. Pattern Matching for switch (Java 21)
+Objective: Simplify conditional logic with pattern matching in enhanced switch expressions.
+
+Solution:
+
+java
+public class PatternMatchingSwitch {
+    public static void printType(Object obj) {
+        String result = switch (obj) {
+            case Integer i -> "Integer: " + i;
+            case String s -> "String: " + s;
+            case Double d -> "Double: " + d;
+            case null -> "Null value";
+            default -> "Unknown type: " + obj.getClass().getSimpleName();
+        };
+        
+        System.out.println(result);
+    }
+    
+    public static void main(String[] args) {
+        printType(42);
+        printType("Hello");
+        printType(3.14);
+        printType(true);
+        printType(null);
+    }
+}
+Explanation:
+
+Uses Java 21 pattern matching for switch
+
+Type patterns in case labels (Integer i, String s, etc.)
+
+Arrow syntax for concise expressions
+
+Handles null case explicitly
+
+Default case for unknown types
+
+31. Basic JDBC Connection
+Objective: Connect Java with a relational database.
+
+Solution:
+
+java
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class JdbcConnection {
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/school";
+        String username = "root";
+        String password = "password";
+        
+        try (Connection connection = DriverManager.getConnection(url, username, password);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT * FROM students")) {
+            
+            System.out.println("Connected to database!");
+            
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                int age = resultSet.getInt("age");
+                
+                System.out.printf("ID: %d, Name: %s, Age: %d%n", id, name, age);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+Explanation:
+
+Establishes JDBC connection to MySQL database
+
+Uses try-with-resources for automatic resource management
+
+Executes SQL query and processes ResultSet
+
+Prints student records from database
+
+Requires JDBC driver in classpath
+
+32. Insert and Update Operations in JDBC
+Objective: Perform insert/update SQL queries from Java.
+
+Solution:
+
+java
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class JdbcCrud {
+    private static final String URL = "jdbc:mysql://localhost:3306/school";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "password";
+    
+    public static void main(String[] args) {
+        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+            Scanner scanner = new Scanner(System.in);
+            
+            // Insert operation
+            System.out.println("Adding new student:");
+            System.out.print("Enter name: ");
+            String name = scanner.nextLine();
+            System.out.print("Enter age: ");
+            int age = scanner.nextInt();
+            
+            insertStudent(connection, name, age);
+            
+            // Update operation
+            System.out.print("\nEnter student ID to update: ");
+            int id = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+            System.out.print("Enter new name: ");
+            String newName = scanner.nextLine();
+            
+            updateStudent(connection, id, newName);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private static void insertStudent(Connection connection, String name, int age) throws SQLException {
+        String sql = "INSERT INTO students (name, age) VALUES (?, ?)";
+        
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, name);
+            statement.setInt(2, age);
+            
+            int rowsInserted = statement.executeUpdate();
+            System.out.println(rowsInserted + " row(s) inserted.");
+        }
+    }
+    
+    private static void updateStudent(Connection connection, int id, String newName) throws SQLException {
+        String sql = "UPDATE students SET name = ? WHERE id = ?";
+        
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, newName);
+            statement.setInt(2, id);
+            
+            int rowsUpdated = statement.executeUpdate();
+            System.out.println(rowsUpdated + " row(s) updated.");
+        }
+    }
+}
+Explanation:
+
+Shows prepared statements for parameterized queries
+
+Insert and update operations with JDBC
+
+Input from user for dynamic queries
+
+Proper resource management with try-with-resources
+
+Error handling with SQLException
+
+33. Transaction Handling in JDBC
+Objective: Use JDBC transactions.
+
+Solution:
+
+java
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class JdbcTransaction {
+    private static final String URL = "jdbc:mysql://localhost:3306/bank";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "password";
+    
+    public static void main(String[] args) {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            connection.setAutoCommit(false); // Start transaction
+            
+            // Transfer $100 from account 1 to account 2
+            transferMoney(connection, 1, 2, 100.00);
+            
+            connection.commit(); // Commit transaction
+            System.out.println("Transaction completed successfully.");
+        } catch (SQLException e) {
+            try {
+                if (connection != null) {
+                    connection.rollback(); // Rollback on error
+                    System.out.println("Transaction rolled back due to error.");
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.setAutoCommit(true); // Reset auto-commit
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    private static void transferMoney(Connection connection, 
+                                    int fromAccount, 
+                                    int toAccount, 
+                                    double amount) throws SQLException {
+        // Debit from account
+        String debitSQL = "UPDATE accounts SET balance = balance - ? WHERE id = ? AND balance >= ?";
+        try (PreparedStatement debitStmt = connection.prepareStatement(debitSQL)) {
+            debitStmt.setDouble(1, amount);
+            debitStmt.setInt(2, fromAccount);
+            debitStmt.setDouble(3, amount);
+            
+            int rowsUpdated = debitStmt.executeUpdate();
+            if (rowsUpdated == 0) {
+                throw new SQLException("Debit failed - insufficient funds or invalid account");
+            }
+        }
+        
+        // Credit to account
+        String creditSQL = "UPDATE accounts SET balance = balance + ? WHERE id = ?";
+        try (PreparedStatement creditStmt = connection.prepareStatement(creditSQL)) {
+            creditStmt.setDouble(1, amount);
+            creditStmt.setInt(2, toAccount);
+            
+            int rowsUpdated = creditStmt.executeUpdate();
+            if (rowsUpdated == 0) {
+                throw new SQLException("Credit failed - invalid account");
+            }
+        }
+    }
+}
+Explanation:
+
+Demonstrates ACID properties with JDBC transactions
+
+Manual commit/rollback control
+
+Transfer operation with debit and credit
+
+Proper resource cleanup in finally block
+
+Validation of update operations
+
+34. Create and Use Java Modules
+Objective: Understand Java's module system.
+
+Solution:
+
+com.utils/module-info.java:
+
+java
+module com.utils {
+    exports com.utils;
+}
+com.utils/com/utils/StringUtils.java:
+
+java
+package com.utils;
+
+public class StringUtils {
+    public static String reverse(String input) {
+        return new StringBuilder(input
+New chat
