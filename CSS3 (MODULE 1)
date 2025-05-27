@@ -1,0 +1,410 @@
+CSS APPLICATION METHODS
+Inline style
+<h1 style="color: red;">Community Event Portal</h1>
+Internal styles
+<style>
+    /* Base body styles */
+    body {
+        background-color: #f5f5f5;
+        margin: 0;
+        font-family: 'Open Sans', sans-serif;
+    }
+</style>
+External stylesheet
+/* ===== Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== Header Styles ===== */
+#mainHeader {
+    background: linear-gradient(135deg, #0062cc, #007bff);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ===== Navigation Styles ===== */
+nav {
+    background-color: #343a40;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    margin: 0 1rem;
+}
+
+/* ===== Link Styles ===== */
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #6610f2;
+}
+
+a:active {
+    color: #ff5722;
+}
+
+/* ===== Button Styles ===== */
+/* Style for main CTA button */
+.cta-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #0069d9;
+}
+
+/* ===== Event Card Styles ===== */
+.eventCard {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ===== Typography Styles ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5rem;
+}
+
+h3, p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* ===== Table Styles ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: center;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* ===== Form Styles ===== */
+form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: 2px solid #007bff;
+    border-color: transparent;
+}
+
+/* ===== Multi-column Layout ===== */
+.multi-column {
+    column-count: 2;
+    column-gap: 30px;
+    column-rule: 1px solid #ddd;
+    margin: 1rem 0;
+}
+
+/* ===== Footer Styles ===== */
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+COLOUR AND BACKGROUND STYLING
+/* Background with fallback */
+body {
+    background-color: #f8f9fa; /* Fallback */
+    background-image: url('../images/community-bg.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+/* Gradient headers */
+.section-header {
+    background: linear-gradient(90deg, rgba(0,123,255,1) 0%, rgba(0,86,179,1) 100%);
+    color: white;
+    padding: 1rem;
+    border-radius: 5px 5px 0 0;
+}
+
+/* Color variables for consistency */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+}
+TYPHOGRAPHY
+/* Google Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+/* Typography styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.hero-text {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.event-description {
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: justify;
+    letter-spacing: 0.5px;
+}
+
+.uppercase-heading {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+LINK AND LIST STYLING
+/* Navigation links */
+.nav-link {
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(255,255,255,0.1);
+    text-decoration: none;
+}
+
+/* Custom list styles */
+.bullet-list {
+    list-style-type: square;
+    list-style-position: inside;
+    padding-left: 1rem;
+}
+
+.bullet-list li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.no-bullet {
+    list-style-type: none;
+    padding-left: 0;
+}
+BOX MODEL AND LAYOUT CONTROL
+/* Box model examples */
+.eventCard {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    background-color: white;
+}
+
+.form-field:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.hidden-element {
+    visibility: hidden; /* Keeps space in layout */
+}
+
+.removed-element {
+    display: none; /* Removes from layout */
+}
+
+/* Spacing utilities */
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+.p-3 { padding: 1.5rem; }
+
+.m-1 { margin: 0.5rem; }
+.m-2 { margin: 1rem; }
+.m-3 { margin: 1.5rem; }
+RESPONSIVE DESIGN
+/* Mobile First Approach */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .eventCard {
+        display: flex;
+        gap: 1.5rem;
+    }
+    
+    .event-image {
+        width: 40%;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .multi-column {
+        column-count: 2;
+    }
+    
+    nav ul {
+        justify-content: flex-end;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+        margin: 0 auto;
+    }
+    
+    .multi-column {
+        column-count: 3;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+/* Mobile-specific styles */
+@media (max-width: 767px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav li {
+        margin: 0.5rem 0;
+    }
+    
+    .hero-text {
+        font-size: 1.8rem;
+    }
+    
+    .multi-column {
+        column-count: 1;
+    }
+    
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    tr {
+        margin-bottom: 1rem;
+    }
+    
+    td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+    }
+    
+    td:before {
+        position: absolute;
+        left: 6px;
+        content: attr(data-label);
+        font-weight: bold;
+    }
+}
+FLEXBOX AND LAYOUTS
+/* Flexbox Layout */
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.flex-item {
+    flex: 1 1 300px;
+}
+
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.grid-item {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
