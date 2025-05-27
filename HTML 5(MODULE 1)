@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Event Portal</title>
+    <style>
+        /* Navigation Styles */
+        nav {
+            background-color: #333;
+            padding: 1rem;
+        }
+        
+        nav a {
+            color: white;
+            margin-right: 1rem;
+            text-decoration: none;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Welcome Banner */
+        #welcomeBanner {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+        
+        /* Image Gallery */
+        .gallery-image {
+            border: 2px solid #ddd;
+            padding: 5px;
+            margin: 5px;
+            max-width: 200px;
+        }
+        
+        /* Form Styles */
+        form {
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        form label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        form input, form select, form textarea {
+            margin-bottom: 1rem;
+            width: 100%;
+            padding: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#events">Events</a>
+        <a href="#contact">Contact</a>
+        <a href="help.html" target="_blank">Help</a>
+    </nav>
+
+    <!-- Welcome Banner -->
+    <div id="welcomeBanner">
+        <h1>Welcome to Our Community Portal!</h1>
+        <p>Check out our special offer: <span style="color: red; font-weight: bold;">First event registration is free!</span></p>
+        <p class="highlight">New events added every week!</p>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home">
+            <h2>Community Events Portal</h2>
+            <p>Welcome to our local community portal where you can find and register for upcoming events in your area.</p>
+            
+            <!-- Image Gallery -->
+            <h3>Past Event Gallery</h3>
+            <table>
+                <tr>
+                    <td>
+                        <img src="event1.jpg" alt="Community Picnic" title="Annual Community Picnic" class="gallery-image">
+                        <p>Annual Community Picnic</p>
+                    </td>
+                    <td>
+                        <img src="event2.jpg" alt="Book Fair" title="Spring Book Fair" class="gallery-image">
+                        <p>Spring Book Fair</p>
+                    </td>
+                    <td>
+                        <img src="event3.jpg" alt="Music Festival" title="Summer Music Festival" class="gallery-image">
+                        <p>Summer Music Festival</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="event4.jpg" alt="Art Show" title="Local Art Exhibition" class="gallery-image">
+                        <p>Local Art Exhibition</p>
+                    </td>
+                    <td>
+                        <img src="event5.jpg" alt="Charity Run" title="Charity 5K Run" class="gallery-image">
+                        <p>Charity 5K Run</p>
+                    </td>
+                    <td>
+                        <img src="event6.jpg" alt="Workshop" title="Gardening Workshop" class="gallery-image">
+                        <p>Gardening Workshop</p>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events">
+            <h2>Upcoming Events</h2>
+            
+            <!-- Event Registration Form -->
+            <form id="registrationForm">
+                <h3>Register for an Event</h3>
+                
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required autofocus placeholder="Enter your full name">
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+                
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" onblur="validatePhone()">
+                <span id="phoneError" style="color: red;"></span>
+                
+                <label for="eventDate">Event Date:</label>
+                <input type="date" id="eventDate" name="eventDate" required>
+                
+                <label for="eventType">Event Type:</label>
+                <select id="eventType" name="eventType" onchange="showEventFee()" required>
+                    <option value="">Select an event</option>
+                    <option value="workshop">Workshop ($10)</option>
+                    <option value="concert">Concert ($25)</option>
+                    <option value="sports">Sports Event ($15)</option>
+                    <option value="free">Community Meeting (Free)</option>
+                </select>
+                
+                <div id="feeDisplay"></div>
+                
+                <label for="message">Special Requests:</label>
+                <textarea id="message" name="message" placeholder="Any special requirements?" onkeyup="countChars(this)"></textarea>
+                <p id="charCount">0 characters</p>
+                
+                <button type="button" onclick="submitForm()">Register</button>
+                <output id="confirmation"></output>
+            </form>
+            
+            <!-- Event Feedback -->
+            <div id="feedbackSection">
+                <h3>Event Feedback</h3>
+                <img src="feedback.jpg" alt="Give us feedback" class="gallery-image" ondblclick="enlargeImage(this)">
+                <p>Double-click the image to enlarge</p>
+            </div>
+            
+            <!-- Video Invite -->
+            <div id="videoSection">
+                <h3>Event Promo Video</h3>
+                <video id="eventVideo" width="400" controls oncanplay="videoReady()">
+                    <source src="event_promo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p id="videoStatus"></p>
+            </div>
+            
+            <!-- Geolocation -->
+            <div id="geolocationSection">
+                <h3>Find Events Near You</h3>
+                <button onclick="findNearbyEvents()">Find Nearby Events</button>
+                <p id="locationInfo"></p>
+            </div>
+            
+            <!-- Preferences -->
+            <div id="preferencesSection">
+                <h3>Your Preferences</h3>
+                <button onclick="clearPreferences()">Clear Preferences</button>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Email: events@community.org</p>
+            <p>Phone: (555) 123-4567</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Local Community Council. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Load saved preferences when page loads
+        window.onload = function() {
+            loadPreferences();
+            
+            // Warn user if they try to leave the form page with unsaved data
+            window.onbeforeunload = function() {
+                if (document.getElementById('name').value || 
+                    document.getElementById('email').value) {
+                    return 'You have unsaved form data. Are you sure you want to leave?';
+                }
+            };
+        };
+
+        // Phone number validation
+        function validatePhone() {
+            const phone = document.getElementById('phone').value;
+            const phoneError = document.getElementById('phoneError');
+            
+            if (phone && !/^\d{10}$/.test(phone)) {
+                phoneError.textContent = 'Please enter a valid 10-digit phone number';
+                return false;
+            } else {
+                phoneError.textContent = '';
+                return true;
+            }
+        }
+
+        // Show event fee when event type is selected
+        function showEventFee() {
+            const eventType = document.getElementById('eventType');
+            const feeDisplay = document.getElementById('feeDisplay');
+            
+            if (eventType.value === 'workshop') {
+                feeDisplay.innerHTML = '<p class="highlight">Fee: $10</p>';
+            } else if (eventType.value === 'concert') {
+                feeDisplay.innerHTML = '<p class="highlight">Fee: $25</p>';
+            } else if (eventType.value === 'sports') {
+                feeDisplay.innerHTML = '<p class="highlight">Fee: $15</p>';
+            } else if (eventType.value === 'free') {
+                feeDisplay.innerHTML = '<p class="highlight">Free Event!</p>';
+            } else {
+                feeDisplay.innerHTML = '';
+            }
+            
+            // Save preference
+            localStorage.setItem('preferredEventType', eventType.value);
+        }
+
+        // Submit form
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            if (!name || !email) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            if (phone && !validatePhone()) {
+                return;
+            }
+            
+            const confirmation = document.getElementById('confirmation');
+            confirmation.innerHTML = `<p class="highlight">Thank you, ${name}! Your registration has been received. 
+                                    We've sent a confirmation to ${email}.</p>`;
+            
+            // Clear form
+            document.getElementById('registrationForm').reset();
+            document.getElementById('feeDisplay').innerHTML = '';
+            document.getElementById('charCount').textContent = '0 characters';
+        }
+
+        // Count characters in textarea
+        function countChars(textarea) {
+            document.getElementById('charCount').textContent = 
+                textarea.value.length + ' characters';
+        }
+
+        // Enlarge image on double click
+        function enlargeImage(img) {
+            img.style.width = (img.style.width === '400px') ? '200px' : '400px';
+        }
+
+        // Video ready to play
+        function videoReady() {
+            document.getElementById('videoStatus').textContent = 'Video ready to play!';
+        }
+
+        // Load saved preferences
+        function loadPreferences() {
+            const preferredEventType = localStorage.getItem('preferredEventType');
+            if (preferredEventType) {
+                document.getElementById('eventType').value = preferredEventType;
+                showEventFee();
+            }
+        }
+
+        // Clear preferences
+        function clearPreferences() {
+            localStorage.clear();
+            sessionStorage.clear();
+            alert('Your preferences have been cleared.');
+            document.getElementById('eventType').value = '';
+            document.getElementById('feeDisplay').innerHTML = '';
+        }
+
+        // Find nearby events using geolocation
+        function findNearbyEvents() {
+            const locationInfo = document.getElementById('locationInfo');
+            locationInfo.textContent = 'Locating...';
+            
+            if (!navigator.geolocation) {
+                locationInfo.textContent = 'Geolocation is not supported by your browser';
+                return;
+            }
+            
+            const options = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            };
+            
+            function success(position) {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                
+                locationInfo.innerHTML = `Your location: Latitude ${latitude.toFixed(4)}, 
+                                        Longitude ${longitude.toFixed(4)}<br>
+                                        <span class="highlight">Nearest event: Community Park Cleanup (0.5 miles away)</span>`;
+            }
+            
+            function error(err) {
+                let message = '';
+                switch(err.code) {
+                    case err.PERMISSION_DENIED:
+                        message = "Location access was denied. Please enable location services.";
+                        break;
+                    case err.POSITION_UNAVAILABLE:
+                        message = "Location information is unavailable.";
+                        break;
+                    case err.TIMEOUT:
+                        message = "The request to get location timed out.";
+                        break;
+                    case err.UNKNOWN_ERROR:
+                        message = "An unknown error occurred.";
+                        break;
+                }
+                locationInfo.textContent = message;
+            }
+            
+            navigator.geolocation.getCurrentPosition(success, error, options);
+        }
+    </script>
+</body>
+</html>
+
+HELP PAGE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - Community Event Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #007bff;
+        }
+        .faq {
+            margin-bottom: 20px;
+        }
+        .question {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Community Event Portal Help</h1>
+    
+    <div class="faq">
+        <p class="question">How do I register for an event?</p>
+        <p>Navigate to the Events section and fill out the registration form with your details and the event you wish to attend.</p>
+    </div>
+    
+    <div class="faq">
+        <p class="question">Is there a cost to attend events?</p>
+        <p>Some events have fees while others are free. The fee (if any) will be displayed when you select an event type.</p>
+    </div>
+    
+    <div class="faq">
+        <p class="question">How do I find events near me?</p>
+        <p>Click the "Find Nearby Events" button in the Events section and allow location access when prompted.</p>
+    </div>
+    
+    <div class="faq">
+        <p class="question">Can I save my preferences?</p>
+        <p>Yes, your preferred event type is automatically saved. You can clear preferences with the "Clear Preferences" button.</p>
+    </div>
+    
+    <div class="faq">
+        <p class="question">Who do I contact for support?</p>
+        <p>Email events@community.org or call (555) 123-4567 for assistance.</p>
+    </div>
+</body>
+</html>
